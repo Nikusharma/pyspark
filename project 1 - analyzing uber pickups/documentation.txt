@@ -1,0 +1,23 @@
+1. Regex Explanation:
+    The pattern r"^\d{1,2}/\d{1,2}/\d{4} \d{1,2}:\d{2}:\d{2}$" is a regular expression designed to match datetime strings in
+    the format M/d/yyyy H:mm:ss.
+
+    ^: Ensures the match starts at the beginning of the string.
+    \d{1,2}: Matches 1 or 2 digits (for month and day).
+    /: Matches the literal / character (date separator).
+    \d{4}: Matches exactly 4 digits (for the year).
+     : Matches a space character (between date and time).
+    \d{1,2}: Matches 1 or 2 digits (for hour).
+    :: Matches the literal : character (time separator).
+    \d{2}: Matches exactly 2 digits (for minutes and seconds).
+    $: Ensures the match ends at the end of the string.
+
+2. to_timestamp(col("Date/Time"), "M/d/yyyy H:mm:ss"):
+    Converts the matched string into a Spark timestamp object using the specified format.
+
+3. The pattern r"^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$" is designed to match ISO-like datetime strings.
+
+    \d{4}: Matches exactly 4 digits (year).
+    -: Matches the literal - character (date separator).
+    \d{2}: Matches exactly 2 digits (month, day, hour, minute, or second).
+    Other parts ( , :, $) behave as explained above.
